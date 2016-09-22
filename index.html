@@ -1,0 +1,47 @@
+<head>
+<style>
+	body {
+	    background-color: #007ab3;
+	}
+
+	.basic {
+	    color: white;
+	    font-family: arial;
+	    font-size: 14px;
+	}
+
+	.code {
+		color: white;
+	    font-family: courier;
+	    font-size: 12px;
+	}
+</style>
+</head>
+
+<body>
+<p class="basic">Hello AWS World!</p>
+
+<p class="basic">Below is a summary of what was done to bring this web server online.</p>
+
+<ol>
+<li class="basic">Created a security group, ec2-sg-1, with inbound permissions to ports 22, 80 from 0.0.0.0/0</li>
+<li class="basic">Created a key pair, ec2-key-1, for SSH access</li>
+<li class="basic">Launched an t2.micro instance, using the Amazon Linux AMI</li>
+	<ul>
+	<li class="basic">Used vpc-1 with no preference on AZ</li>
+	<li class="basic">Enabled auto-assign Public IP</li>
+	<li class="basic">Left IAM role as None since we will only be using the security group created above</li>
+	</ul>
+</ol>
+
+<p class="basic">Used the following bootstrap script:</p>
+
+<p class="code">
+#!/bin/bash<br>
+yum install httpd -y<br>
+yum update -y<br>
+chkconfig httpd on<br>
+service httpd start<br>
+</p>
+
+</body>
